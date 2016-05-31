@@ -1,0 +1,39 @@
+body{
+	background-color:#9c36dd;
+	background-image:url("/img/leaficon.png");
+}
+.container{
+	position:fixed;
+	text-aling:center;
+	width:60%;
+	top:;
+	border:1px solid #e6ebef;
+	background-color:#808f9d;
+	padding-bottom:5%;
+	left:20%;
+	right:20%;
+	top:17%;
+	max-width:242px;
+	min-width: 128px;
+	min-height: 144px;
+}
+h2{
+	text-align:center;
+}
+img{
+	width:1000%;
+	height:1000%;
+}
+span{
+	color:white;
+}
+.form-sigin{
+	position:absolute;
+}
+.remember-me{
+	position:relative;
+	height:100%;}
+.banner{
+	position:absolute;
+	height:25%;
+}

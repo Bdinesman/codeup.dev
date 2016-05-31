@@ -1,0 +1,52 @@
+.boxtop{
+	position:relative;
+	font-size:14px;
+	color:white;
+	font-weight:bold;
+	clear:right;
+	width:50px;
+	height:50px;
+	border:1px solid black;
+	padding:5px;
+	margin:25px;
+	float:left;
+}
+.boxbottom{
+	position:relative;
+	font-size:14px;
+	color:white;
+	font-weight:bold;
+	width:50px;
+	height:50px;
+	border:1px solid black;
+	padding:5px;
+	margin:25px;
+	float:left
+}
+#box-red{
+	background-color:red;
+}
+#box-orange{
+	background-color:orange;
+}
+#box-yellow{
+	background-color:yellow;
+}
+#box-green{
+	clear:both;
+	background-color:green;
+}
+#box-blue{
+	background-color:blue;
+}
+#box-violet{
+	background-color:violet;
+}
+img{
+	position:relative;
+	float:right;
+	left:44px;
+	bottom:80px;
+}
+
+

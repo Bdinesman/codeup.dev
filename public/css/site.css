@@ -1,0 +1,46 @@
+#background{
+	background-color:#C264ED;
+	background-image:url(/skeleton.gif);
+	background-size:10%;
+	font-family: "Cutive Mono";
+	color:#90ED64;
+}
+#background h2{
+	text-decoration:underline;
+	color:#64D4ED;
+}
+ul{
+	list-style:none;
+}
+ol{
+	list-style: katakana;
+}
+ul>li:before{
+	content: "\2605";
+}
+table{
+	border: 1px solid black;
+	padding:0px;
+	margin:0px;
+	text-align: center;
+	border-collapse:collapse;
+	background-color:#ED7C64;
+}
+td{
+	border: 1px solid black;
+	padding: 0px;
+	margin:0px;
+	width:;
+}
+th{
+	border: 1px solid black;
+	padding: 0px;
+	margin:0px;
+	background-color:#6B3485
+}
+a:visited{
+	color:#6B3485;
+}
+a:link{
+	color:#FFA794;
+}

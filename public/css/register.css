@@ -1,0 +1,64 @@
+.banner{
+	position:absolute;
+	background-color:#b5e3bc;
+	padding:0;
+	margin:0;
+	width:100%;
+	height:20%;
+	min-height:40px;
+	max-height:41px;
+}
+.taskbar{
+	position:relative;
+	background-color:grey;
+	height:50%;
+	width:102%;
+	bottom:0%;
+	text-align:center;
+	margin-top:1%;
+}
+
+img{
+	position:relative;
+	padding:0;
+	margin: 0;
+	width:auto;
+	height:auto;
+	max-width:20%;
+	max-height:20%;
+}
+.menu-item{
+	position:relative;
+	float:left;
+	color:white;
+	text-align:center;
+	border:1px solid white;
+	height:100%;
+}
+.searchbar{
+	display:inline;
+	position:relative;
+	clear:both;
+	margin:0;
+	padding:0;
+}
+#searchbarbutton{
+	background-color:orange;
+}
+.taskbarbutton{
+	overflow:hidden;
+	background-color:#3e190b;
+	color:white;
+	border:none;
+	text-align:inline-block;
+	width:20%;
+	height:100%;
+	float:left;
+}
+#shop{
+	clear:both;
+}
+button:hover{
+	background-color:#beff1e;
+	border:1px solid white;
+}
