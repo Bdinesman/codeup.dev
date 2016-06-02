@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+</head>
+<body>
+<script>
+	for(var i=0;i<=10;i++){
+		var string="";
+		if(i<10){
+			for(var j=0;j<i;j++){
+				string = string + i;
+			}
+		}else if(i>=10){
+			for(var j=0;j<i;j++){
+				string=string + (i-10);
+			}
+		}
+		console.log(string);
+	}
+	var random = Math.floor((Math.random()*10)+1)
+	for(var k=1;k<10;k++){
+		console.log(random + " x " + k + " = " + (random*k));
+	}
+	var randomNumber = Math.floor((Math.random()*100)+1)
+	for(var i=0;i<10;i++){
+		if(randomNumber%2==0){
+			console.log(randomNumber + " is even");
+		}else{
+			console.log(randomNumber + " is odd");
+		}
+		randomNumber = Math.floor((Math.random()*100)+1);
+	}
+	for(var i=0;i<20;i++){
+		console.log(100-(5*i));
+	}
+</script>
+</body>
+</html>

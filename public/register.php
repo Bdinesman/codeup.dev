@@ -16,8 +16,12 @@
 			<div class="searchbardiv col-xs-5 input-group">
 			<input type="text" id="searchbar" class="col-s-3 searchbar" placeholer="Search">
 			<span class=><button id="searchbarbutton" class="btn btn-secondary" type="button"><span class="glyphicon glyphicon-search"></button></span></span>
+			</div>
 		</div>
-	</div>
+	</div>	
+	<div class="moreinfo">
+		<div class="bottombar">
+		</div>
 	</div>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
