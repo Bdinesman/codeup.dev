@@ -68,7 +68,6 @@ img{
 	left:0;
 }
 .taskbarbutton{
-	overflow:hidden;
 	background:#3e190b;
 	color:white;
 	border:none;
@@ -97,4 +96,26 @@ button:hover{
 	top:100%;
 	height:20%;
 	background-color:#3e190b;
+}
+#shopdropdownmenu{
+	position:absolute;
+	display:none;
+	top:100%;
+	z-index: 1;
+	width:20%;
+	height:100%;
+	left:0;
+	background-color:#3e190b;
+	border:1px solid #fff8ec;
+}
+#profiledropdownmenu{
+	position:absolute;
+	left:80%;
+	display:none;
+	top:100%;
+	z-index: 1;
+	width:20%;
+	height:100%;
+	background-color:#3e190b;
+	border:1px solid #fff8ec;
 }

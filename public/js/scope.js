@@ -1,5 +1,6 @@
 "use strict";
 
+( function (){
 var myNameIs = 'Bob';
 function sayHello (name){
 	console.log(name);
@@ -23,6 +24,9 @@ do{
 	random = Math.floor((Math.random()*100)+1);
 	i++
 }while(i<10);
+})();
+console.log(myNameIs);
+sayHello(myNameIs);
 // TODO:
 // Create a function called 'isOdd' that takes a number as a parameter.
 // The function should use the ternary operator to log a message.
