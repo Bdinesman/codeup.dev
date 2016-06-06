@@ -1,0 +1,66 @@
+<<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script>
+		'use strict';
+
+// todo:
+// Create an array of objects that represent books.
+// Each book should have a title and an author.
+// The book author should be an object with a firstName and lastName.
+// Be creative and add at least 5 books to the array
+var books = [
+{
+	"title": "Harry Potter",
+	"author": {
+		"fistName":"JK",
+		"lastName":"Rowling"
+	}
+},{
+	"title": "Short History of Nearly Everything",
+	"author": {
+		"firstName":"Bill",
+		"lastName":"Bryson"
+	}
+},
+{
+	"title": "Frankenstein",
+	"author": {
+		"fistName":"Mary",
+		"lastName":"Shelly"
+	}
+},{
+	"title": "One Fish, Two Fish",
+	"author": {
+		"fistname":"Dr.",
+		"lastName": "Seuss"
+	}
+},{
+	"title": "A Modest Proposal",
+	"author": {
+		"firstName": "Thomas",
+		"lastName": "Payne"
+	}
+}];
+console.log(books);
+
+// log out the books array
+
+
+// todo:
+// Loop through the array of books using .forEach and print out the specified information about each one.
+function itemizedList(book,index){
+	console.log("Book #" + (index+1));
+    console.log("Title: " + book.title);
+    console.log("Author: " + book.fistName + " " + book.lastName);
+    console.log("---");
+}
+books.forEach(itemizedList);
+
+// end loop here
+	</script>
+</body>
+</html>
