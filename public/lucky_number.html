@@ -3,58 +3,16 @@
 <head>
 </head>
 <body>
-<object style="position:absolute; height:50%;width:100%;background: border-radius:100%;" id="circle"></object>
 <script>
-	var firstPercent=100;
-	var secondPercent=0;
-	while(secondPercent<100){
-		var redtogreen = setInterval(redtoGreen, 1);
-		var percentags = setInterval(cnangeFirstPercent, 100);
-		var percentags2 = setInterval(changeSecondPercent,100);
-	}
-	clearInterval(redtogreen);
-	clearInterval(percentags);
-	clearInterval(percentags2);
-	if(secondPercent==100){
-		firstPercent=100;
-		secondPercent=0;
-		setInterval(greentoBlue,1);
-		percentags = setInterval(cnangeFirstPercent, 100);
-		percentags2 = setInterval(changeSecondPercent,100);
-	}
-	function cnangeFirstPercent(){
-		firstPercent=firstPercent-1;
-		return firstPercent;
-	}
-	function changeSecondPercent(){
-		secondPercent=secondPercent+1;
-		return secondPercent;
-	}
-	function redtoGreen(){
-		var circle=document.getElementById("circle");
-		circle.style.background="radial-gradient(green " + secondPercent + "%, red " + firstPercent + "%)"; 
-	}
-	function greentoBlue(){
-		var circle=document.getElementById("circle");
-		circle.style.background="radial-gradient(blue " + secondPercent + "%, green " + firstPercent + "%)"; 
-	}
-var luckyNu
-var luckyNumber;
-var i = 0;
-var counterArray=[];
+var counterArray=[0,0,0,0,0,0];
 
-while (i < 100) {
-    luckyNumber = Math.floor(Math.random()* 6);
-    counterArray.push(luckyNumber);
-    i++;
+for(var i=0;i<100;i++) {
+	var luckyNumber=Math.floor(Math.random()*6);
+	counterArray[luckyNumber]=counterArray[luckyNumber]+1;
 }
-counterArray.sort();
-console.log("0 appeared " + counterArray.indexOf(1) + " times");
-console.log("1 appeared " + (counterArray.indexOf(2)-counterArray.indexOf(1))) + " times";
-console.log("2 appeared " + (counterArray.indexOf(3)-counterArray.indexOf(2)) + " times");
-console.log("3 appeared " + (counterArray.indexOf(4)-counterArray.indexOf(3)) + "times");
-console.log("4 appeared " + (counterArray.indexOf(4)-counterArray.indexOf(3)) + "times");
-console.log("5 appeared" + + (100-counterArray.indexOf(5)) + " times");
+for(var i=0;i<counterArray.length;i++){
+	console.log(i + " appeared " + counterArray[i] + " times");
+}
 // The output should be something like
 
 // 0 appeared 10 times

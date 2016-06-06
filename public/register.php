@@ -1,11 +1,12 @@
 <!DOCTYPE HTML>
 <html>
-<head>
+<head id="head">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<link rel="stylesheet" href="/css/register.css">
+	<link id="originalTheme" rel="stylesheet" href="/css/register.css">
 </head>
 <body id="body">
 	<div class="banner">
+		<button id="changeTheme">Change Theme</button>
 		<img src="/img/leaficon.png">
 		<div class="taskbar btn-toolbar" role="toolbar">
 			<div id="shopdropdownmenu"></div>
@@ -33,6 +34,7 @@
 	var body = document.getElementById("body");
 	var profilebttn = document.getElementById("profilebttn");
 	var profiledropdown = document.getElementById("profiledropdownmenu");
+	var changeTheme = document.getElementById("changeTheme");
 	shop.onmouseover = function () {
 		shopdropdown.style.display="block";
 	}
@@ -51,6 +53,12 @@
 	shopdropdown.onmouseout = function(){
 		profiledropdown.style.display="none";
 	}
+	changeTheme.onclick = function(){
+		var originalTheme = document.getElementById("originalTheme");
+		var neopolitan = document.createElement("link");
+		originalTheme.setAttribute("href","/css/chocolate.css");
+	}
+
 </script>
 </body>
 </html>
