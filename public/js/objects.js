@@ -20,24 +20,23 @@
     // Say hello from the person object.
     // person.sayHello();
 })();
+(function(){
 var randomArray=[];
 var threeArray=[];
-function generateRandomArray(n){
-	for(i=0;i<n;i++){
+function generateArray(){
+	for(i=0;i<20;i++){
 	var random = Math.floor(Math.random()*1000);
 	randomArray.push(random);
 	}
-	document.write("Random Array: [" + randomArray.sort() + "]"); 
-	return randomArray;
-}
-function divisibleByThree(array){
-	array.forEach(sort);
-	document.write("Numbers Divisible by Three: [" + threeArray.sort() + "]"); 
+	document.write("Random Array: [" + randomArray.sort() + "]<br>"); 
+	randomArray.forEach(sort);
+	document.write("\nNumbers Divisible by Three: [" + threeArray.sort() + "]");
 }
 function sort(number){
 	if (number%3==0){
 		threeArray.push(number);
 	}
 }
-var testArray = generateRandomArray(100);
-divisibleByThree(testArray);
+generateArray();
+})();
+
