@@ -1,0 +1,21 @@
+'use strict';
+// Exercise 1
+// Refactor this code to interact with the user, use prompt, alert,
+// and confirm where needed. Here are some more rules:
+// * Prompt the user for her name, and the name of the subject
+// * Use at least one object. This object should have at least one
+// * function.
+// * Use at least one array (it must be part of the object)
+// * Make it work for a variable number of grades.
+var grade1 = 70;
+var grade2 = 80;
+var grade3 = 95;
+var combinedGrades = grade1 + grade2 + grade3;
+var numberOfGrades = 3;
+var awesomeGrade = 80;
+var average = combinedGrades / numberOfGrades;
+if (average > awesomeGrade) {
+    console.log("You're Awesome!!!!");
+} else {
+    console.log('You need more practice.');
+}
