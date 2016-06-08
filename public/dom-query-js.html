@@ -7,6 +7,10 @@
 <body>
 
 <h1 id="main-header">Hello World!</h1>
+<button id="changeHeader">Change Main Header</button>
+<button id="changeSubheader">Change Subheader</button>
+<button id="changeLi">Change db-dbid item</button>
+<button id="missionAccomplished">Mission Accomplishedr</button>
 <ul>
     <li data-dbid="1">Item 1</li>
     <li id="checking" data-dbid="2">Item 2</li>
@@ -37,24 +41,39 @@
                 }
             }
         }*/
-        var mainHeader = document.getElementById('main-header');
-        mainHeader.innerHTML='Javascript is Cool';
-        var subHeader=document.getElementById('sub-header');
-        subHeader.style.color='blue';        
-        var listItems = document.getElementsByTagName('li');
-        for (var i = 0; i < listItems.length; i++) {
-            var dbId = listItems[i].getAttribute("data-dbid");
-            if(dbId==1){
-                listItems[i].style.color='grey';
-            }
-            if(i%2!=0){
-                var li = listItems[i];
-                li.style.color='grey'
-            }
+        var changeHeader = function(){
+            var mainHeader = document.getElementById('main-header');
+            mainHeader.innerHTML='Javascript is Cool';
         }
-        var subParagraphs=document.getElementsByClassName('sub-paragraph');
-        subParagraphs[0].innerHTML='Mission Accomplished!';
-
+        var changeSubheader = function(){
+            var subHeader=document.getElementById('sub-header');
+            subHeader.style.color='blue';
+        }    
+        var changeLi = function(){
+             var listItems = document.getElementsByTagName('li');
+             for (var i = 0; i < listItems.length; i++) {
+                var dbId = listItems[i].getAttribute("data-dbid");
+                if(dbId==1){
+                    listItems[i].style.color='grey';
+                }
+                if(i%2!=0){
+                    var li = listItems[i];
+                    li.style.color='grey'
+                }
+            }
+        } 
+        var changeSubParagraph = function (){
+            var subParagraphs=document.getElementsByClassName('sub-paragraph');
+            subParagraphs[0].innerHTML='Mission Accomplished!';
+        }   
+        var changeHeaderBttn = document.getElementById('changeHeader');
+        changeHeaderBttn.addEventListener('click',changeHeader,false);
+        var changeSubheaderBttn = document.getElementById('changeSubheader');
+        changeSubheaderBttn.addEventListener('click',changeSubheader,false);
+        var changeLiBttn = document.getElementById("changeLi");
+        changeLiBttn.addEventListener('click',changeLi,false);
+        var missionAccomplishedBttn = document.getElementById('missionAccomplished');
+        missionAccomplishedBttn.addEventListener('click',changeSubParagraph,false);
         // TODO: Set inner html of mainHeader to "JavaScript is Cool"
 
         // TODO: Uncomment the next line and get the sub header element by id
