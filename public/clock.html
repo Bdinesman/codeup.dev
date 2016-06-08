@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<body>
+	<script src="js/clock.js"></script></head>
+	<script>
+	function Clock() {
+		this.totalSeconds=600;
+		this.displayTime="";
+		this.seconds=Math.floor((this.totalSeconds%60));
+		this.minutes=Math.floor((this.totalSeconds/60));
+		this.countdown=function() {
+			this.totalSeconds--;
+		}
+		this.display=function(){;
+			this.displayTime=this.displayTime+this.minutes;
+			this.displayTime=this.displayTime+":";
+			this.displayTime=this.displayTime+this.seconds;
+		}
+		this.holder=document.write("<p<Text</p>");
+	}
+	var test = new Clock();
+	test.holder;
+	test.countdown();
+	console.log(test);
+	test.display();
+	test.countdown();
+	test.display();
+	</script>
+</body>
+</html>
