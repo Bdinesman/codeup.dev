@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Xavier's School for Gifted Youngsters</title>
+    <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+        crossorigin="anonymous"
+    >
+</head>
+<body>
+<article class="container">
+    <header class="page-header">
+        <h1>Are you an awesome student? <small id="student-name"></small></h1>
+    </header>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody id="grades">
+                        <tr>
+                            <td>Average</td>
+                            <td id="student-average"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <form>
+                    <div class="form-group">
+                        <label for="name">What's your name?</label>
+                        <input type="text" class="form-control" id="name" placeholder="Name">
+                    </div>
+                    <button type="button" class="btn btn-default" id="save-name">
+                        Save
+                    </button>
+                </form>
+                <br>
+                <form>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" class="form-control" id="subject" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="grade">Grade</label>
+                        <input type="number" class="form-control" id="grade" placeholder="Grade">
+                    </div>
+                    <button type="button" class="btn btn-default" id="add-grade">
+                        Add and continue
+                    </button>
+                    <button type="button" class="btn btn-primary" id="calculate-average">
+                        Add and calculate average
+                    </button>
+                </form>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="hidden" id="student-awesome">
+                <div class="alert alert-info" role="alert">
+                    You're awesome!!!
+                </div>
+            </div>
+            <div class="hidden" id="student-practice">
+                <div class="alert alert-warning" role="alert">
+                    You need to practice more...
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
+<script
+    src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"
+></script>
+<script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+    integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+    crossorigin="anonymous"
+></script>
+<script src="js/student.js"></script>
+<script>
+    var addGradeBttn = document.getElementById('add-grade');
+    addGradeBttn.disabled=true;
+    var calculateAverageBttn = document.getElementById('calculate-average');
+    calculateAverageBttn.disabled=true;
+    calculateAverageBttn.addEventListener('click',calculateAverage,false);
+    var gradeInput = document.getElementById('grade');
+    gradeInput.disabled = true;
+    var subjectInput = document.getElementById('subject');
+    subjectInput.disabled = true;
+    subjectInput.contentEditable = true;
+    var saveNameBttn=document.getElementById('save-name');
+    saveNameBttn.addEventListener('click',addName,false);
+    var nameInput = document.getElementById('name');
+    var gradesTable = document.getElementById('grades');
+    function addName(){
+        if(nameInput.value!=""){
+            student.name = nameInput.value;
+            nameInput.disabled=true;
+            saveNameBttn.disabled=true;
+            addGradeBttn.disabled=false;
+            calculateAverageBttn.disabled=false;
+            gradeInput.disabled = false;
+            subjectInput.disabled = false;
+        }
+    }
+    function newEntry(){
+        if(subjectInput.value!=""){
+            var subjectName = subjectInput.value;
+            var subjectGrade=gradeInput.value;
+            student.addSubject(subjectName,subjectGrade);
+            var enteredDataRow = document.createElement("tr");
+            var eneteredSubject = document.createElement("td");
+            var eneteredSubjectText = document.createTextNode(subjectName);
+            var enteredGrade = document.createElement("td");
+            var enteredGradeText= document.createTextNode(subjectGrade);
+            enteredGrade.appendChild(enteredGradeText);
+            eneteredSubject.appendChild(eneteredSubjectText);
+            enteredDataRow.appendChild(eneteredSubject);
+            enteredDataRow.appendChild(enteredGrade);
+            gradesTable.appendChild(enteredDataRow);
+            subjectInput.value = "";
+            gradeInput.value="";
+        }
+    }
+    function calculateAverage(){
+        if (student.subjects.length!=0){
+            var studentAverage = student.calculateAverage();
+            var averageCell = document.getElementById('student-average');
+            averageCell.innerText=studentAverage;
+            if(studentAverage>=student.awesomeGrade){
+                document.getElementById('student-awesome').className="";
+            }else{
+                document.getElementById('student-practice').className="";
+            }
+        }
+    }
+    addGradeBttn.addEventListener('click',newEntry,false);
+</script>
+</body>
+</html>
+<!--Instructions
+Using the javascript object definition in student.js add event listeners to the proper DOM elements per the following:
+
+Create a JavaScript file named grades-events.js and add a script tag to reference it from the grades.html file.
+The buttons with the labels Add and continue and Add and calculate average should be disabled when the page loads.
+Those same buttons should be enabled after the student inputs her name and clicks on Save. The student's name should be added to the element with the ID student-name and also saved in the corresponding student object.
+After the student inputs the subject, the grade, and clicks Add and continue, the subject name and the grade should be added to the table as a new row and to the student object using the method addSubject.
+If the student clicks on Add and calculate average, the value should be added to the table, added to the student object (see step 3), and the average should be calculated using the method calculateAverage. This value should be added to the element with ID student-average. Next, use the method isAwesome to remove the class hidden from the element with ID student-awesome if it returns true and to remove the class hidden from the element with ID student-practiceif it returns false.
+Raw  student.js
+'use strict';
+
+var student = {
+    awesomeGrade: 80,
+    name: null,
+    subjects: [],
+    calculateAverage: function () {
+        var average = 0;
+        this.subjects.forEach(function (subject) {
+            average += subject.grade;
+        });
+        return average / this.subjects.length;
+    },
+    addSubject: function (name, grade) {
+        var subject = {
+            name: name,
+            grade: grade
+        };
+        this.subjects.push(subject);
+    },
+    isAwesome: function () {
+        return this.calculateAverage() > this.awesomeGrade;
+    }
+}-->
