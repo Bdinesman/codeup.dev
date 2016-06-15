@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		.invisible{
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<dl>
+		<dt>Is there really a supervolcano under Yellowstone National Park?</dt>
+		<dd class='invisible'>Yes</dd>
+		<dt>What is the largest national park?</dt>
+		<dd class='invisible'>Wrangell-St.Elias National Park and Preserve, AK (13.2 million acres)</dd>
+		<dt>What is the smallest national PArk?</dt>
+		<dd class='invisible'> Thaddeus Kosciuszko National Memorial, PA (.2 acres)</dd>
+		<dt>What is the oldest national park?</dt>
+		<dd class='invisible'>Yellowstone National Park</dd>
+		<dt>Which state has the most national parks?</dt>
+		<dd class='invisible'>California</dd>
+		<dt>When did the national park services start?</dt>
+		<dd class='invisible'>1918</dd>
+		<dt>What park gets the most visitors annually?</dt>
+		<dd class='invisible'>Great Smokey Mountains PArk</dd>
+		<dt>Is national park status permanent?</dt>
+		<dd class='invisible'>Mo! In fact, what was one Mackinac National Park has since been turned into a state park?</dd>
+		<dt>Who created the National Park uniform?</dt>
+		<dd class='invisible'>The US Cavalry</dd>
+		<dt>Are national parks located in the continetnal US?</dt>
+		<dd class='invisible'>While most parks are in the continental US, a park can also be located in one of the US protectorates, such as Puerto Rico</dd>
+		<dt>How many areas does the NPS cover?</dt>
+		<dd class='invisible'>411</dd>
+		<a id='toggleVisible' href='#toggleVisible'>Show answers</a>
+	</dl>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#toggleVisible').click(function(event){
+				event.preventDefault();
+				$('dd').toggleClass('invisible');
+			});
+		});
+	</script>
+</body>
+</html>

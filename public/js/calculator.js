@@ -38,7 +38,7 @@ var calculator={
 		}else if(input==61 || input==13){
 			input='Enter';
 			return input;
-		}else if(input==45){
+		}else if(input==45 || input==95){
 			input='-';
 			return input;
 		}else if(input==46){
@@ -66,21 +66,24 @@ var leftSide = document.getElementById('leftSide');
 var operator = document.getElementById('operator');
 var rightSide= document.getElementById('rightSide');
 var buttons = document.getElementsByTagName('button');
+var moveable = document.getElementById('calcBody').draggable=true;
 var leftSideValue = "";
 var operaterValue = "";
 var rightSideValue = "";
 var result = 0;
 function checkButtonPress(){
 	var pressed = calculator.bttnPress();
+	console.log(pressed);1
 	if(pressed=='c'){
 		leftSide.value="";
 		operator.value="";
-		rightSide.value="";
+		rightSide.value=""
+		result=0;
 	}
-	if(pressed=='Enter'&& rightSide.value!=""){
+	else if(pressed=='Enter'&& rightSide.value!=""){
 		calculate();
 	}
-	if(typeof pressed=='number'){
+	else if(typeof pressed=='number'){
 		if((rightSide.value=="") && (operator.value=="")){
 			leftSideInput();
 			console.log(operator.innerText);
@@ -88,8 +91,14 @@ function checkButtonPress(){
 			rightSideInput();
 		}
 	}
-	if(typeof pressed!='number' && pressed!='Enter' && operator.value=="" && pressed!='c'){
+	else if(typeof pressed!='number' && pressed!='Enter' && pressed!='.' && operator.value=="" && pressed!='c'){
 			operand();
+	}else if(pressed=='.'){
+		if(leftSide.value.indexOf('.')==-1 && operator.value=="" && result==0){
+			leftSideInput();
+		}else if(operator.value!="" && rightSide.value.indexOf('.')==-1){
+			rightSideInput();
+		}
 	}
 }
 for(var i=0;i<buttons.length;i++){
@@ -97,7 +106,6 @@ for(var i=0;i<buttons.length;i++){
 }
 function leftSideInput(){
 	leftSide.value += calculator.bttnPress();
-	//leftSide.value=leftSide.value + leftSideValue;
 }
 function operand(){
 	var operaterValue = calculator.bttnPress();
@@ -108,8 +116,8 @@ function rightSideInput(){
 	rightSide.value += calculator.bttnPress();
 }
 function calculate(){
-	var firstValue = parseInt(leftSide.value);
-	var secondValue = parseInt(rightSide.value);
+	var firstValue = parseFloat(leftSide.value);
+	var secondValue = parseFloat(rightSide.value);
 	if (operator.value=='+'){
 		result=firstValue+secondValue;
 	}else if(operator.value=='-'){
@@ -123,26 +131,30 @@ function calculate(){
 }
 function pressedOperations (){
 	var pressed=parseInt(this.value);
-	console.log(pressed);
-	if(isNaN(pressed)==true && this.value=='c'){
+	if(this.value=='c'){
 		leftSide.value="";
 		operator.value="";
-		rightSide.value="";
+		rightSide.value=""
+		result=0;
 	}
-	if(this.value=='Enter'&& rightSide.value!=""){
+	else if(this.value=='Enter'&& rightSide.value!=""){
 		calculate();
 	}
-	if(typeof pressed=='number' && isNaN(pressed)==false){
+	else if(typeof pressed=='number' && isNaN(pressed)==false){
 		if((rightSide.value=="") && (operator.value=="")){
-			leftSide.value += pressed;
-			console.log(operator.innerText);
+			leftSide.value+=this.value;
 		}if(operator.value!=""){
-			rightSide.value += pressed;
+			rightSide.value+=this.value;
 		}
 	}
-	if(isNaN(pressed)==true && this.value!='Enter' && operator.value=="" && this.value!='c'){
-		pressed=this.value;
-		operator.value=operator.value + pressed;
+	else if(isNaN(pressed)==true && pressed!='Enter' && this.value!='.' && operator.value=="" && pressed!='c'){
+			operator.value+=this.value;
+	}else if(this.value=='.'){
+		if(leftSide.value.indexOf('.')==-1 && operator.value=='' && result==0){
+			leftSide.value+=this.value;
+		}else if(operator.value!='' && rightSide.value.indexOf('.'==-1)){
+			rightSide.value+=this.value;
+		}
 	}
 }
 window.addEventListener("keypress",checkButtonPress,false);

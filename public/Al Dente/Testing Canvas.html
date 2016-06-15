@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<canvas id='tutorial' width='300' height='300'></canvas>
+	<script>
+		var canvas = document.getElementById('tutorial');
+		function init(){
+			var canvas = document.getElementById('tutorial');
+			var ctx = canvas.getContext('2d');
+			ctx.fillStyle='FFF';
+			ctx.fillRect (150,150,100,100);
+			ctx.strokeStyle='red';
+			for(var i=0;i<60;i++){
+				ctx.beginPath();
+				ctx.moveTo((5*i),0);
+				ctx.lineTo((5*i),399);
+				ctx.closePath();
+				ctx.stroke();
+			}
+			for(var i=0;i<60;i++){
+				ctx.beginPath();
+				ctx.moveTo(0,(5*i));
+				ctx.lineTo(300,(5*i));
+				ctx.closePath();
+				ctx.stroke();
+			}
+			ctx.strokeRect(150,150,100,100);
+			ctx.clearRect(175,175,50,50);
+		}
+		init();
+	</script>
+</body>
+</html>

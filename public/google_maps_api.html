@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	    <div id='maps' style="height:300px;width:600px;"></div>
+	    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnGfu601TNqd0oIO9SciVvoPJZ8s5rXpc"></script>
+	    <script>
+	    setInterval(enhance,230);
+	    if(x==21){
+	    	clearTimeout(enhance);
+	    }
+	    var x=0;
+	    var address = "14415 Blanco Rd, San Antonio, TX 78216";
+	    var mapOptions = {
+	    		zoom:0,
+	    		center:{
+					lat:29.574086,
+					lng:-98.515435
+	    		}
+	    };
+	    var geocoder = new google.maps.Geocoder();
+	    geocoder.geocode({ "address": address }, function(results, status) {
+		   if (status == google.maps.GeocoderStatus.OK) {
+		       map.setCenter(results[0].geometry.location);
+		   } else {
+		       alert("Geocoding was not successful - STATUS: " + status);
+		   }
+		});
+	    var map = new google.maps.Map(document.getElementById('maps'), mapOptions);
+	    function enhance(){
+	    	map.setZoom(x);
+	    	x+=1;
+	    }
+	    var infoWindow = new google.maps.InfoWindow({
+	    	content:'<strong style="font-weight;bold;">Tost Bistro & Wine Bar   &#9749</strong><br>14415 Blanco Rd, San Antonio, TX 78216<br><div style="1px solid black"><img src="img/arrow-left.png" style="position:relative;width:50px;height:50px;float:left;padding-top:10px;z-index:1" ><img src="img/dining-room.jpeg" style="width:100px;height:67px;padding-right:10px;clear:none;z-index:-1" ><img src="img/lounge.jpeg" style="width:100px;height:67px;z-index:-1" ></div>'
+	    });
+	   	var origin = {lat:29.574086,lng:-98.515435};
+	   	setTimeout(info,5830);
+	   	function info(){
+	   		var marker = new google.maps.Marker({
+	    		position:origin,
+	    		map:map
+	    	});
+	   		marker.setAnimation('DROP');
+	   		infoWindow.open(map,marker);
+	   	}
+	    </script>
+</body>
+</html>

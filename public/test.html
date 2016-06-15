@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		#container{
+			position: absolute;
+			width:600px;
+			height:100px;
+			border:1px solid grey;
+			outline-color:red;
+			outline-style:solid;
+			overflow: hidden;
+
+		}
+		#arrow-left{
+			position:relative;
+			width:50px;
+			height: 50px;
+			background-color: red;
+			float:left;
+			z-index: 1;
+			margin-top: 20px;
+		}
+		#arrow-right{
+			position:relative;
+			width:50px;
+			height: 50px;
+			background-color: red;
+			float:right;
+			z-index: 1;
+			margin-top: 20px;
+			top:-100px;
+		}
+		.menu-item{
+			position:relative;
+			width:90px;
+			height: 90px;
+			margin-right: 5px;
+			display:inline-block;
+			border:1px solid black;
+			left:0px;
+		}
+	</style>
+</head>
+<body>
+	<div id='container'>
+		<button id='arrow-left'></button>
+		<object class="menu-item" style='left:25px'></object>
+		<object class="menu-item" style='left:50px'></object>
+		<object class="menu-item" style='left:75px'></object>
+		<object class="menu-item" style='left:100px'></object>
+		<object class="menu-item" style='left:125px'></object>
+		<object class="menu-item" style='left:700px;top:-96px'></object>
+		<object class="menu-item" style='left:725px;top:-96px'></object>
+		<button id='arrow-right'></button>
+	</div>
+	<script>
+		var button = document.getElementById('arrow-left');
+		var menuItem = document.getElementsByClassName('menu-item');
+		var leftValue=0;
+		function scroll() {
+			console.log(menuItem[0].style.left);
+			for(var i=0;i<menuItem.length;i++){
+				var currentLeft = menuItem[i];
+				currentLeft.style.left=parseInt(currentLeft.style.left) + leftValue + 'px';
+			}
+			leftValue=leftValue - 10;
+			console.log(menuItem[0].style.left);
+			console.log(leftValue);
+			return leftValue;
+		}
+		button.addEventListener('mousedown',scroll,true);
+	</script>
+</body>
+</html>

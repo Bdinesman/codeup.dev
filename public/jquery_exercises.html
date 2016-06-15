@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div class="codeup"></div>
+	<div class="codeup"></div>
+	<div id='codeup'></div>
+	<div id='codeup'></div>
+	<h1>TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST </h1>
+	<p>TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST </p>
+	<li>TEST </li>
+	<li>TEST </li>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('.codeup').css('border','1px solid red');
+			$('.codeup').css('width','100px');
+			$('.codeup').css('height','100px');
+			$('h1').click(function(){
+				$('h1').css('background-color','yellow');
+			});
+			$('p').dblclick(function(){
+				$('p').css('font-size','18px');
+			});
+			$('li').hover(
+				function(){
+					$('li').css('color','red');	
+				},
+				function(){
+					$('li').css('color','black');
+				});
+			//$('h1,p,li').css('background-color','yellow');
+			//var contents = $('#codeup');
+			//alert(contents.innerHTML);
+		});
+	</script>
+</body>
+</html>
