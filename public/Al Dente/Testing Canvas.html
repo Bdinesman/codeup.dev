@@ -10,10 +10,8 @@
 		function init(){
 			var canvas = document.getElementById('tutorial');
 			var ctx = canvas.getContext('2d');
-			ctx.fillStyle='FFF';
-			ctx.fillRect (150,150,100,100);
-			ctx.strokeStyle='red';
-			for(var i=0;i<60;i++){
+			ctx.strokeStyle='FFF';
+			/*for(var i=0;i<60;i++){
 				ctx.beginPath();
 				ctx.moveTo((5*i),0);
 				ctx.lineTo((5*i),399);
@@ -26,9 +24,15 @@
 				ctx.lineTo(300,(5*i));
 				ctx.closePath();
 				ctx.stroke();
-			}
-			ctx.strokeRect(150,150,100,100);
-			ctx.clearRect(175,175,50,50);
+			}*/
+			ctx.strokeStyle='F00';
+			ctx.fillStyle='red';
+			ctx.beginPath();
+			ctx.moveTo(80,190);
+			ctx.bezierCurveTo(50,130,210,160,200,250);
+			ctx.bezierCurveTo(180,290,90,230,80,190);
+			ctx.stroke();
+			ctx.fill();
 		}
 		init();
 	</script>

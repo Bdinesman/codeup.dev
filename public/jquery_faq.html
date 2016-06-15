@@ -34,12 +34,47 @@
 		<dd class='invisible'>411</dd>
 		<a id='toggleVisible' href='#toggleVisible'>Show answers</a>
 	</dl>
+	<h3>Park Name</h3>
+	<ul>
+		<li>Fact</li>
+		<li>Fact</li>
+		<li>Fact</li>
+		<li>Fact</li>
+	</ul>
+	<h3>Park Name</h3>
+	<ul>
+		<li>Fact</li>
+		<li>Fact</li>
+		<li>Fact</li>
+		<li>Fact</li>
+	</ul>
+	<h3>Park Name</h3>
+	<ul>
+		<li>Fact</li>
+		<li>Fact</li>
+		<li>Fact</li>
+		<li>Fact</li>	
+	</ul>
+	<h3>Park Name</h3>
+	<ul>
+		<li>Fact</li>
+		<li>Fact</li>
+		<li>Fact</li>
+		<li>Fact</li>
+	</ul>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script>
 		$(document).ready(function(){
 			$('#toggleVisible').click(function(event){
 				event.preventDefault();
 				$('dd').toggleClass('invisible');
+			});		
+			$('ul').each(function(index, element){
+					$Li = $(this).children('li');
+					$Li.first().css('font-weight','bold');
+			});
+			$('li').click(function(event){
+				$(this).parent('ul').addClass('invisible');
 			});
 		});
 	</script>
