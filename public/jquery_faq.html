@@ -66,15 +66,14 @@
 	<script>
 		$(document).ready(function(){
 			$('#toggleVisible').click(function(event){
-				event.preventDefault();
-				$('dd').toggleClass('invisible');
+				$('dd').slideToggle();
 			});		
 			$('ul').each(function(index, element){
 					$Li = $(this).children('li');
 					$Li.first().css('font-weight','bold');
 			});
 			$('li').click(function(event){
-				$(this).parent('ul').addClass('invisible');
+				$(this).parent('ul').slideUp();
 			});
 		});
 	</script>
