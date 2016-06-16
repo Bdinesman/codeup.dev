@@ -90,98 +90,60 @@
     integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
     crossorigin="anonymous"
 ></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="js/student.js"></script>
 <script>
-    var addGradeBttn = document.getElementById('add-grade');
-    addGradeBttn.disabled=true;
-    var calculateAverageBttn = document.getElementById('calculate-average');
+    var addGradeBttn = $('#add-grade');
+    addGradeBttn.prop('disabled',true);
+    addGradeBttn.click(newEntry);
+    var calculateAverageBttn = $('#calculate-average');
     calculateAverageBttn.disabled=true;
-    calculateAverageBttn.addEventListener('click',calculateAverage,false);
-    var gradeInput = document.getElementById('grade');
-    gradeInput.disabled = true;
-    var subjectInput = document.getElementById('subject');
-    subjectInput.disabled = true;
-    subjectInput.contentEditable = true;
-    var saveNameBttn=document.getElementById('save-name');
-    saveNameBttn.addEventListener('click',addName,false);
-    var nameInput = document.getElementById('name');
-    var gradesTable = document.getElementById('grades');
+    calculateAverageBttn.click(calculateAverage);
+    var gradeInput = $('#grade');
+    gradeInput.prop('disabled',true);
+    var $subjectInput = $('#subject');
+    $subjectInput.prop('disabled',true);
+    $subjectInput.contentEditable = true;
+    var saveNameBttn=$('#save-name');
+    saveNameBttn.click(addName);
+    var nameInput = $('#name');
+    var gradesTable = $('#grades');
     function addName(){
-        if(nameInput.value!=""){
-            student.name = nameInput.value;
-            nameInput.disabled=true;
-            saveNameBttn.disabled=true;
-            addGradeBttn.disabled=false;
-            calculateAverageBttn.disabled=false;
-            gradeInput.disabled = false;
-            subjectInput.disabled = false;
+        if(nameInput.val()!=""){
+            student.name = nameInput.val();
+            nameInput.prop('disabled',true);
+            saveNameBttn.prop('disabled',true);
+            addGradeBttn.prop('disabled',false);
+            calculateAverageBttn.prop('disabled',false);
+            gradeInput.prop('disabled',false);
+            $subjectInput.prop('disabled',false);
+            $('#student-name').text(nameInput.val());
         }
     }
     function newEntry(){
-        if(subjectInput.value!=""){
-            var subjectName = subjectInput.value;
-            var subjectGrade=gradeInput.value;
+        if($subjectInput.value!=""){
+            var subjectName = $subjectInput.val();
+            var subjectGrade=gradeInput.val();
             student.addSubject(subjectName,subjectGrade);
-            var enteredDataRow = document.createElement("tr");
-            var eneteredSubject = document.createElement("td");
-            var eneteredSubjectText = document.createTextNode(subjectName);
-            var enteredGrade = document.createElement("td");
-            var enteredGradeText= document.createTextNode(subjectGrade);
-            enteredGrade.appendChild(enteredGradeText);
-            eneteredSubject.appendChild(eneteredSubjectText);
-            enteredDataRow.appendChild(eneteredSubject);
-            enteredDataRow.appendChild(enteredGrade);
-            gradesTable.appendChild(enteredDataRow);
-            subjectInput.value = "";
-            gradeInput.value="";
+            document.getElementById('grades').innerHTML =  '<tr><td>' + subjectName + '</td><td>' + subjectGrade + '</td></tr>' + document.getElementById('grades').innerHTML;
+            $subjectInput.val('');
+            gradeInput.val('');
         }
     }
     function calculateAverage(){
         if (student.subjects.length!=0){
             var studentAverage = student.calculateAverage();
             var averageCell = document.getElementById('student-average');
-            averageCell.innerText=studentAverage;
+            averageCell.innerHTML=studentAverage;
             if(studentAverage>=student.awesomeGrade){
-                document.getElementById('student-awesome').className="";
+                $('#student-awesome').removeClass('hidden');
+                $('#student-practice').addClass('hidden');
             }else{
-                document.getElementById('student-practice').className="";
+                $('#student-practice').removeClass('hidden');
+                $('#student-awesome').addClass('hidden');
             }
         }
     }
-    addGradeBttn.addEventListener('click',newEntry,false);
 </script>
 </body>
 </html>
-<!--Instructions
-Using the javascript object definition in student.js add event listeners to the proper DOM elements per the following:
-
-Create a JavaScript file named grades-events.js and add a script tag to reference it from the grades.html file.
-The buttons with the labels Add and continue and Add and calculate average should be disabled when the page loads.
-Those same buttons should be enabled after the student inputs her name and clicks on Save. The student's name should be added to the element with the ID student-name and also saved in the corresponding student object.
-After the student inputs the subject, the grade, and clicks Add and continue, the subject name and the grade should be added to the table as a new row and to the student object using the method addSubject.
-If the student clicks on Add and calculate average, the value should be added to the table, added to the student object (see step 3), and the average should be calculated using the method calculateAverage. This value should be added to the element with ID student-average. Next, use the method isAwesome to remove the class hidden from the element with ID student-awesome if it returns true and to remove the class hidden from the element with ID student-practiceif it returns false.
-Raw  student.js
-'use strict';
-
-var student = {
-    awesomeGrade: 80,
-    name: null,
-    subjects: [],
-    calculateAverage: function () {
-        var average = 0;
-        this.subjects.forEach(function (subject) {
-            average += subject.grade;
-        });
-        return average / this.subjects.length;
-    },
-    addSubject: function (name, grade) {
-        var subject = {
-            name: name,
-            grade: grade
-        };
-        this.subjects.push(subject);
-    },
-    isAwesome: function () {
-        return this.calculateAverage() > this.awesomeGrade;
-    }
-}-->

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books</title>
+</head>
+<body>
+<table>
+    <a class="sort" href="#">Sort</a>
+    <thead>
+    <th>
+        <td>Friend</td>
+        <td class="header">Books</td>
+    </th>
+    </thead>
+    <tbody id="friends">
+    </tbody>
+</table>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+    $tbody = $('#friends');
+    $sortName = $('.sort');
+    $friends = [
+        {name: 'Oliver', books: ['Ansible for DevOps', 'Servers for hackers']},
+        {name: 'Barry', books: ['Working effectively with unit tests', '50 quick ideas for your tests']},
+        {name: 'Jessica', books: ['Understanding the 4 rules of simple design', 'Principles of package design']},
+        {name: 'Clark', books: ['Selling test driven projects']}
+    ];
+    $(document).ready(function(){
+        table = "";
+        $friends.forEach(function (friend)  {
+            table += '<tr><td>' + friend.name + '</td><td>' + friend.books.join(', ') + '</td></tr>';
+        });
+        $tbody.html(table);
+        $sortName.click(function(event){
+            sortFriends();
+            buildTableRows();
+        });
+    });
+    function sortFriends(){
+        $friendsSorted=[];
+        $friendsSortedByName=[];
+        $friends.forEach(function(element,index){
+            $friendsSorted.push(element.name + index);
+        });
+        $friendsSorted.sort();
+        $friendsSorted.forEach(function(element,index){
+            $friendsSorted.push(parseInt(element.charAt(element.length-1)));
+        });
+        $friendsSorted.splice(0,($friendsSorted.length/2));
+        $friendsSorted.forEach(function(element,index){
+            $friendsSortedByName.push($friends[element]);
+        })
+    };
+    function buildTableRows (friends) {
+        table = "";
+        $friendsSortedByName.forEach(function (friend)  {
+            table += '<tr><td>' + friend.name + '</td><td>' + friend.books.join(', ') + '</td></tr>';
+        });
+        $tbody.html(table);
+    }
+</script>
+</body>
+</html>
