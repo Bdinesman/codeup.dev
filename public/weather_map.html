@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
 	<style>
 		.weather{
@@ -15,8 +14,6 @@
 			text-align:center;
 		}
 		#day3{
-			left:67%;
-			top:-81%;
 		}
 		#weather{
 			width:66%;
@@ -29,6 +26,7 @@
 			font-size: 10px;
 			background-color:#39b1a4;
 			vertical-align: center;
+			font-size:20px;
 		}
 		img{
 			width:40px;
@@ -41,7 +39,7 @@
 			color:white;
 			font-weight: bold;
 			text-align:center;
-			font-size:20px;
+			font-size:40px;
 		}
 		#bottombanner{
 			position:relative;
@@ -73,7 +71,7 @@
 <body>
 		<div id='backgroundContainer'>
 			<div id='weather'>
-					<div id='topbanner'>3 Day Forecast</div>
+					<div id='topbanner'>3 Day Forecast for <span id='city'></span></div>
 					<div id='day1'class= 'weather'></div>
 					<div id='day2' class='weather'></div>
 					<div id='day3' class='weather'></div>
@@ -83,6 +81,7 @@
 	    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnGfu601TNqd0oIO9SciVvoPJZ8s5rXpc"></script>
 	    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	    <script>
+	  	(function(){
 	    	var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 			var days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 	    	var lat;
@@ -137,10 +136,10 @@
 	    function getWeatherData(){
 	    	var sky=[];
 	    	var date = new Date ();
-			var currentMonth = date.getUTCMonth();
-			var currentDay = date.getUTCDate();
-			var currentDayOfWeek=date.getUTCDay();
-			var currentYear = date.getUTCFullYear();
+			var currentMonth = date.getMonth();
+			var currentDay = date.getDate();
+			var currentDayOfWeek=date.getDay();
+			var currentYear = date.getFullYear();
 			$('#backgroundContainer').show();
 			$.get("http://api.openweathermap.org/data/2.5/forecast", {
     			APPID: '3f029140e5eea508943b79987f149a50',
@@ -161,7 +160,7 @@
 							sky.push('Clear');
 						}
 					};
-					console.log(data.list[0]);
+					$('#city').html(data.city.name + ', ' + data.city.country);
     				$('#day1').html('<strong>' + days[currentDayOfWeek] + '</strong><br><strong>' + months[currentMonth] + ' ' + currentDay + ', ' + currentYear + '<br><img src="http://openweathermap.org/img/w/' + data.list[0].weather[0].icon + '.png"></strong></br><strong>' + sky[0] + '</strong><br><strong>Current Temp:</strong>' + data.list[0].main.temp + '&#176F<br><strong>High:</strong>' + data.list[0].main.temp_max  + '&#176F<br><strong>Low:</strong>' + data.list[0].main.temp_min +'&#176F<br><strong>Humidity:</strong> ' + data.list[0].main.humidity + '%<br><strong>Wind:</strong> ' + data.list[0].wind.speed + 'mph');
     				nextDay(date);
     				$('#day2').html('<strong>' + days[date.getDay()] + '</strong><br><strong>' + months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear() + '</strong></br><img src="http://openweathermap.org/img/w/' + data.list[8].weather[0].icon + '.png"><br><strong>' + sky[1] + '</strong><br><strong>Current Temp:</strong>' + data.list[8].main.temp + '&#176F<br><strong>High:</strong>' + data.list[8].main.temp_max  + '&#176F<br><strong>Low:</strong>' + data.list[8].main.temp_min +'&#176F<br><strong>Humidity:</strong> ' + data.list[8].main.humidity + '%<br><strong>Wind:</strong> ' + data.list[8].wind.speed + 'mph');
@@ -169,6 +168,7 @@
     				$('#day3').html('<strong>' + days[date.getDay()] + '</strong><br><strong>' + months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear() + '</strong><br><img src="http://openweathermap.org/img/w/' + data.list[16].weather[0].icon + '.png"><br><strong>' + sky[2] + '</strong><br><strong>Current Temp:</strong>' + data.list[16].main.temp + '&#176F<br><strong>High:</strong>' + data.list[16].main.temp_max  + '&#176F<br><strong>Low:</strong>' + data.list[16].main.temp_min +'&#176F<br><strong>Humidity:</strong> ' + data.list[16].main.humidity + '%<br><strong>Wind:</strong> ' + data.list[16].wind.speed + 'mph');
 			});
 			}
+		})();
 	    </script>
 </body>
 </html>
