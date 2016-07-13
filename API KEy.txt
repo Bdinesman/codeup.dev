@@ -2,3 +2,5 @@ GoogleMaps:
 AIzaSyBnGfu601TNqd0oIO9SciVvoPJZ8s5rXpc
 Weather Service:
 3f029140e5eea508943b79987f149a50
+DigitialOcean:
+b4efcc9f021ab3770dcb04172335541eb47479fe55edf82d1b02431fec170805
